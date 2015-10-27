@@ -1,0 +1,13 @@
+---
+- name: download flink...
+  environment: proxy_env
+  get_url: url='{{flink_url}}' dest='/tmp/{{flink_archive}}'
+
+- name: unarchive flink...
+  unarchive: copy=no src='/tmp/{{flink_archive}}' dest='/opt'
+
+- name: link flink...
+  file: src='/opt/{{flink_name}}' dest='/opt/flink' state=link
+
+- name: install flink into default path
+  copy: src=etc/profile.d/flink.sh dest=/etc/profile.d/flink.sh

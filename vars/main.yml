@@ -1,0 +1,6 @@
+---
+flink_ver : '0.9.0'
+flink_hadoop_ver : 'hadoop26'
+flink_name : 'flink-{{flink_ver}}'
+flink_archive : '{{flink_name}}-bin-{{flink_hadoop_ver}}.tgz'
+flink_url : 'http://mirror.reverse.net/pub/apache/flink/{{flink_name}}/{{flink_archive}}'
