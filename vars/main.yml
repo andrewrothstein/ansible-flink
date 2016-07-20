@@ -1,4 +1,4 @@
 ---
 flink_name : 'flink-{{flink_ver}}'
 flink_archive : '{{flink_name}}-bin-{{flink_hadoop_ver}}-scala_{{flink_scala_ver}}.tgz'
-flink_url : 'http://apache.osuosl.org/flink/{{flink_name}}/{{flink_archive}}'
+flink_url : '{{flink_mirror}}/{{flink_name}}/{{flink_archive}}'
