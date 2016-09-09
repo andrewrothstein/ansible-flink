@@ -1,5 +1,6 @@
 ---
-flink_ver : '1.0.3'
+flink_ver : '1.1.2'
 flink_hadoop_ver : hadoop27
 flink_scala_ver : '2.11'
 flink_mirror: http://apache.osuosl.org/flink
+flink_download_timeout_seconds : 600

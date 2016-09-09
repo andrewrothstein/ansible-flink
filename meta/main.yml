@@ -13,6 +13,7 @@ galaxy_info:
     - name: Fedora
       versions:
         - 23
+        - 24
     - name: Ubuntu
       versions:
         - trusty
@@ -23,6 +24,4 @@ galaxy_info:
 
 dependencies:
   - role: andrewrothstein.hadoop
-    version: v1.0.1
-    
-  
+    version: v1.0.2

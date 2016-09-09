@@ -5,6 +5,8 @@
   get_url: >
     url={{flink_url}}
     dest=/tmp/{{flink_archive}}
+    mode=0644
+    timeout={{flink_download_timeout_seconds}}
 
 - name: unarchive flink...
   become: yes
