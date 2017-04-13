@@ -2,7 +2,7 @@
 flink_ver : '1.2.0'
 flink_hadoop_ver : hadoop27
 flink_scala_ver : '2.11'
-flink_mirror: http://apache.osuosl.org/flink
+flink_mirror: http://apache.claz.org/flink
 flink_checksum: sha256:ccb37938fef54236252a3e895cdca63d881c6138515109b4ad4da2a0fb9b8ac8
 flink_download_timeout_seconds : 600
 
