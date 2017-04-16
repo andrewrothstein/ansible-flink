@@ -36,4 +36,4 @@
   template:
     src: '{{item.f}}.j2'
     dest: '{{item.d}}/{{item.f}}'
-    moded: '{{item.m}}'
+    mode: '{{item.m}}'
