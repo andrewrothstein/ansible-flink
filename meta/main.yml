@@ -19,10 +19,16 @@ galaxy_info:
       versions:
         - trusty
         - xenial
+    - name: Alpine
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - jessie
 
   galaxy_tags:
     - development
 
 dependencies:
   - role: andrewrothstein.hadoop
-    version: v2.0.1
+    version: v2.1.0

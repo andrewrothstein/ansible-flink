@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-flink.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-flink)
 andrewrothstein.flink
 =========
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-flink.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-flink)
 
 Installs [Apache Flink](https://flink.apache.org/).
 

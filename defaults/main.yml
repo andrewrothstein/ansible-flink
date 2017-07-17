@@ -1,9 +1,9 @@
 ---
-flink_ver : '1.2.0'
+flink_ver : '1.3.1'
 flink_hadoop_ver : hadoop27
 flink_scala_ver : '2.11'
-flink_mirror: http://apache.claz.org/flink
-flink_checksum: sha256:ccb37938fef54236252a3e895cdca63d881c6138515109b4ad4da2a0fb9b8ac8
+flink_mirror: http://www-us.apache.org/dist/flink
+flink_checksum: sha256:6522d0d8a10af596e40ed710306027758a0535c1e078f587eee420032a75eed9
 flink_download_timeout_seconds : 600
 
 flink_install_parent_dir: /usr/local
