@@ -18,5 +18,5 @@ flink_checksums:
       # https://www.apache.org/dist/flink/flink-1.6.1/flink-1.6.1-bin-hadoop24-scala_2.11.tgz.sha512
       '2.11': sha512:c7f5e29f1e444ec8695612303b7938b5e681f69edac8b220b9508ae7a4138e2e70a5a52926195e2b00787dc7ad49ca028ffbae244cc5e48a59fd4950806822a0
 
-flink_download_timeout_seconds : 600
+flink_download_timeout_seconds: 600
 flink_install_parent_dir: /usr/local

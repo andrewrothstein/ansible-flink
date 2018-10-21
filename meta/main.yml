@@ -37,4 +37,3 @@ galaxy_info:
 dependencies:
   - role: andrewrothstein.java-oracle-jre
     version: v2.1.0
-
