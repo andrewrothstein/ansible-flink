@@ -1,22 +1,36 @@
 ---
-- name: download flink...
+- name: check for flink installation...
   become: yes
-  become_user: root
-  get_url:
-    url: '{{flink_url}}'
-    dest: /tmp/{{flink_archive}}
-    mode: 0644
-    checksum: '{{flink_checksum}}'
-    timeout: '{{flink_download_timeout_seconds}}'
-
-- name: unarchive flink...
-  become: yes
-  become_user: root
-  unarchive:
-    remote_src: yes
-    src: /tmp/{{flink_archive}}
-    dest: '{{flink_install_parent_dir}}'
-    creates: '{{flink_install_dir}}'
+  stat:
+    path: '{{flink_install_dir}}'
+  changed_when: false
+  register: flink_binary
+- when: not flink_binary.stat.exists
+  block:
+    - name: download flink...
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{flink_url}}'
+        dest: /tmp/{{flink_archive}}
+        mode: 0644
+        checksum: '{{flink_checksum}}'
+        timeout: '{{flink_download_timeout_seconds}}'
+    - name: unarchive flink...
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{flink_archive}}
+        dest: '{{flink_install_parent_dir}}'
+        creates: '{{flink_install_dir}}'
+  always:
+    - name: delete archive
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{flink_archive}}
+        state: absent
 
 - name: link flink...
   become: yes
@@ -32,8 +46,7 @@
   with_items:
     - f: flink.sh
       d: /etc/profile.d
-      m: '0644'
   template:
     src: '{{item.f}}.j2'
     dest: '{{item.d}}/{{item.f}}'
-    mode: '{{item.m}}'
+    mode: '{{item.m|default("0644")}}'

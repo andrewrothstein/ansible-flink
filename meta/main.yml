@@ -15,20 +15,26 @@ galaxy_info:
         - 23
         - 24
         - 25
+        - 26
+        - 27
+        - 28
     - name: Ubuntu
       versions:
         - trusty
         - xenial
+        - bionic
     - name: Alpine
       versions:
         - all
     - name: Debian
       versions:
         - jessie
+        - stretch
 
   galaxy_tags:
     - development
 
 dependencies:
-  - role: andrewrothstein.hadoop
-    version: v2.2.0
+  - role: andrewrothstein.java-oracle-jre
+    version: v2.1.0
+

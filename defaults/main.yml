@@ -1,13 +1,22 @@
 ---
-flink_ver : '1.3.2'
-flink_hadoop_ver : hadoop27
-flink_scala_ver : '2.11'
-flink_mirror: http://www-us.apache.org/dist/flink
+flink_ver: '1.6.1'
+flink_hadoop_ver: hadoop28
+flink_scala_ver: '2.11'
+flink_mirror: http://www.apache.org/dist/flink
 flink_checksums:
-  # http://apache.claz.org/flink/flink-1.3.1/flink-1.3.1-bin-hadoop27-scala_2.11.tgz
-  '1.3.1': sha256:6522d0d8a10af596e40ed710306027758a0535c1e078f587eee420032a75eed9
-  # http://apache.claz.org/flink/flink-1.3.2/flink-1.3.2-bin-hadoop27-scala_2.11.tgz
-  '1.3.2': sha256:378be2346990264eeff2ae012175523fc94ddbe59bead7e2a76e0d93c0c7c455
-flink_download_timeout_seconds : 600
+  '1.6.1':
+    hadoop28:
+      # https://www.apache.org/dist/flink/flink-1.6.1/flink-1.6.1-bin-hadoop28-scala_2.11.tgz.sha512
+      '2.11': sha512:93fe32aac6f5962e3e5dbfd7567639298a607e88fb7936e6c0b48845e146e3c3ffc474548d475dec916fddeb023ac35a96909a44c98601140abb538593580c1d
+    hadoop27:
+      # https://www.apache.org/dist/flink/flink-1.6.1/flink-1.6.1-bin-hadoop27-scala_2.11.tgz.sha512
+      '2.11': sha512:a6ede6d58596983837b26dada76be6e7655f605cca465c983a6d2f487902a09a8ca4d10021a309f4bc40300121252d00086bc99e3cfb8a19f40acd2f4f41c304
+    hadoop26:
+      # https://www.apache.org/dist/flink/flink-1.6.1/flink-1.6.1-bin-hadoop26-scala_2.11.tgz.sha512
+      '2.11': sha512:25d0e99e7130dc26d8d3c0c695f0e4acb9216ff7054f88cf05703498cd02703fbe352bdd625e001aa8f860e6eb085ccafcbff6eff2b3fe47bc27094b48bf6a69
+    hadoop24:
+      # https://www.apache.org/dist/flink/flink-1.6.1/flink-1.6.1-bin-hadoop24-scala_2.11.tgz.sha512
+      '2.11': sha512:c7f5e29f1e444ec8695612303b7938b5e681f69edac8b220b9508ae7a4138e2e70a5a52926195e2b00787dc7ad49ca028ffbae244cc5e48a59fd4950806822a0
 
+flink_download_timeout_seconds : 600
 flink_install_parent_dir: /usr/local
