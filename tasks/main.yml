@@ -2,7 +2,7 @@
 - name: check for flink installation...
   become: yes
   stat:
-    path: '{{flink_install_dir}}'
+    path: '{{ flink_install_dir }}'
   changed_when: false
   register: flink_binary
 - when: not flink_binary.stat.exists
@@ -11,33 +11,33 @@
       become: yes
       become_user: root
       get_url:
-        url: '{{flink_url}}'
-        dest: /tmp/{{flink_archive}}
+        url: '{{ flink_url }}'
+        dest: /tmp/{{ flink_archive }}
         mode: 0644
-        checksum: '{{flink_checksum}}'
-        timeout: '{{flink_download_timeout_seconds}}'
+        checksum: '{{ flink_checksum }}'
+        timeout: '{{ flink_download_timeout_seconds }}'
     - name: unarchive flink...
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{flink_archive}}
-        dest: '{{flink_install_parent_dir}}'
-        creates: '{{flink_install_dir}}'
+        src: /tmp/{{ flink_archive }}
+        dest: '{{ flink_install_parent_dir }}'
+        creates: '{{ flink_install_dir }}'
   always:
     - name: delete archive
       become: yes
       become_user: root
       file:
-        path: /tmp/{{flink_archive}}
+        path: /tmp/{{ flink_archive }}
         state: absent
 
 - name: link flink...
   become: yes
   become_user: root
   file:
-    src: '{{flink_install_dir}}'
-    dest: '{{flink_link_dir}}'
+    src: '{{ flink_install_dir }}'
+    dest: '{{ flink_link_dir }}'
     state: link
 
 - name: install flink into default path
@@ -47,6 +47,6 @@
     - f: flink.sh
       d: /etc/profile.d
   template:
-    src: '{{item.f}}.j2'
-    dest: '{{item.d}}/{{item.f}}'
-    mode: '{{item.m|default("0644")}}'
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m|default("0644") }}'
