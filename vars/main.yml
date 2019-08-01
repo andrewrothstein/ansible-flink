@@ -1,9 +1,8 @@
 ---
 flink_name: flink-{{ flink_ver }}
-flink_archive: '{{ flink_name }}-bin-{{ flink_hadoop_ver }}-scala_{{ flink_scala_ver }}.tgz'
-
+flink_archive: '{{ flink_name }}-bin-scala_{{ flink_scala_ver }}.tgz'
 flink_url: '{{ flink_mirror }}/{{ flink_name }}/{{ flink_archive }}'
+flink_checksum: '{{ flink_checksums[flink_ver][flink_scala_ver] }}'
 
 flink_install_dir: '{{ flink_install_parent_dir }}/{{ flink_name }}'
 flink_link_dir: '{{ flink_install_parent_dir }}/flink'
-flink_checksum: '{{ flink_checksums[flink_ver][flink_hadoop_ver][flink_scala_ver] }}'
