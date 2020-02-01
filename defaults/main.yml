@@ -1,13 +1,17 @@
 ---
-flink_ver: '1.8.1'
+flink_ver: '1.9.2'
 flink_scala_ver: '2.12'
 flink_mirror: http://www.apache.org/dist/flink
+flink_download_timeout_seconds: 600
+flink_install_parent_dir: /usr/local
 flink_checksums:
   '1.8.1':
     # https://www.apache.org/dist/flink/flink-1.8.1/flink-1.8.1-bin-scala_2.11.tgz.sha512
     '2.11': sha512:bebdf73475c305699ee29f2955ffff35cfd2358251fd159f30da9895eed9f0736a4eee8dac6094368fbdcc5c4d296c49614c46c97d1fba44aa4dca318a9005d0
     # https://www.apache.org/dist/flink/flink-1.8.1/flink-1.8.1-bin-scala_2.12.tgz.sha512
     '2.12': sha512:c5330f2b7dc61fbc58870b74f089c33d34409dc6cabef349b8647f5e8b8829a90954d228c57ea655cd1afa80be36a60cadc1a675a4655ae48f158adccf599a83
-
-flink_download_timeout_seconds: 600
-flink_install_parent_dir: /usr/local
+  '1.9.2':
+    # https://www.apache.org/dist/flink//flink-1.9.2/flink-1.9.2-bin-scala_2.11.tgz.sha512
+    '2.11': sha512:c1bb1470abd52aa61fd480f0b849d8162af56340e7ef53ee25c04cc1d88e9100b497a86e0a810308b4f0f36a0965430448ec1fde8b8a378c97c8424ae871524a
+    # https://www.apache.org/dist/flink//flink-1.9.2/flink-1.9.2-bin-scala_2.12.tgz.sha512
+    '2.12': sha512:c5252b6768d2372367920ae2d96b1b5b4d03eae850c73aa83cef65eeba33aa27e431b2311e21c2d33bea642dc34a478402f89269e195d481319a4bf2b76e046e
