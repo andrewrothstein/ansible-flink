@@ -1,6 +1,7 @@
 ---
 flink_name: flink-{{ flink_ver }}
 flink_archive: '{{ flink_name }}-bin-scala_{{ flink_scala_ver }}.tgz'
+flink_tmp_archive: /tmp/{{ flink_archive }}
 flink_url: '{{ flink_mirror }}/{{ flink_name }}/{{ flink_archive }}'
 flink_checksum: '{{ flink_checksums[flink_ver][flink_scala_ver] }}'
 

@@ -1,6 +1,6 @@
 andrewrothstein.flink
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-flink.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-flink)
+![Build Status](https://github.com/andrewrothstein/ansible-flink/actions/workflows/build.yml/badge.svg)
 
 Installs [Apache Flink](https://flink.apache.org/).
 

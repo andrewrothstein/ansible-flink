@@ -1,39 +1,45 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
+- include_role:
+    name: andrewrothstein.temurin
+  vars:
+    openjdk_app: jre
 - name: check for flink installation...
-  become: yes
+  become: true
   stat:
     path: '{{ flink_install_dir }}'
   changed_when: false
   register: flink_binary
 - when: not flink_binary.stat.exists
   block:
-    - name: download flink...
-      become: yes
+    - name: downloading {{ flink_url }} to {{ flink_tmp_archive }}
+      become: true
       become_user: root
       get_url:
         url: '{{ flink_url }}'
-        dest: /tmp/{{ flink_archive }}
+        dest: '{{ flink_tmp_archive }}'
         mode: 0644
         checksum: '{{ flink_checksum }}'
         timeout: '{{ flink_download_timeout_seconds }}'
     - name: unarchive flink...
-      become: yes
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
-        src: /tmp/{{ flink_archive }}
+        remote_src: true
+        src: '{{ flink_tmp_archive }}'
         dest: '{{ flink_install_parent_dir }}'
         creates: '{{ flink_install_dir }}'
   always:
-    - name: delete archive
-      become: yes
+    - name: deleting {{ flink_tmp_archive }}
+      become: true
       become_user: root
       file:
-        path: /tmp/{{ flink_archive }}
+        path: '{{ flink_tmp_archive }}'
         state: absent
 
-- name: link flink...
-  become: yes
+- name: linking {{ flink_link_dir }} to {{ flink_install_dir }}
+  become: true
   become_user: root
   file:
     src: '{{ flink_install_dir }}'
@@ -41,7 +47,7 @@
     state: link
 
 - name: install flink into default path
-  become: yes
+  become: true
   become_user: root
   with_items:
     - f: flink.sh
@@ -49,4 +55,4 @@
   template:
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
-    mode: '{{ item.m|default("0644") }}'
+    mode: '{{ item.m | default("0644") }}'
