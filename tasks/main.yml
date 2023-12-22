@@ -1,58 +1,58 @@
 ---
-- include_role:
-    name: andrewrothstein.unarchive-deps
-- include_role:
+- ansible.builtin.include_role:
+    name: andrewrothstein.unarchivedeps
+- ansible.builtin.include_role:
     name: andrewrothstein.temurin
   vars:
     openjdk_app: jre
-- name: check for flink installation...
+- name: Check for flink installation...
   become: true
-  stat:
+  ansible.builtin.stat:
     path: '{{ flink_install_dir }}'
   changed_when: false
   register: flink_binary
 - when: not flink_binary.stat.exists
   block:
-    - name: downloading {{ flink_url }} to {{ flink_tmp_archive }}
+    - name: Downloading {{ flink_url }} to {{ flink_tmp_archive }}
       become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ flink_url }}'
         dest: '{{ flink_tmp_archive }}'
         mode: 0644
         checksum: '{{ flink_checksum }}'
         timeout: '{{ flink_download_timeout_seconds }}'
-    - name: unarchive flink...
+    - name: Unarchive flink...
       become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ flink_tmp_archive }}'
         dest: '{{ flink_install_parent_dir }}'
         creates: '{{ flink_install_dir }}'
   always:
-    - name: deleting {{ flink_tmp_archive }}
+    - name: Deleting {{ flink_tmp_archive }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ flink_tmp_archive }}'
         state: absent
 
-- name: linking {{ flink_link_dir }} to {{ flink_install_dir }}
+- name: Linking {{ flink_link_dir }} to {{ flink_install_dir }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ flink_install_dir }}'
     dest: '{{ flink_link_dir }}'
     state: link
 
-- name: install flink into default path
+- name: Install flink into default login path
   become: true
   become_user: root
   with_items:
     - f: flink.sh
       d: /etc/profile.d
-  template:
+  ansible.builtin.template:
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
-    mode: '{{ item.m | default("0644") }}'
+    mode: '{{ item.m | default("644") }}'

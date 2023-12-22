@@ -14,8 +14,10 @@ dl()
 
 dl_ver() {
     local ver=$1
+    local scala_ver=$2
     printf "  '%s':\n" $ver
-    dl $ver 2.12
+    dl $ver $scala_ver
 }
 
-dl_ver ${1:-1.16.1}
+scala_ver=2.12
+dl_ver ${1:-1.18.0} $scala_ver
