@@ -1,17 +1,17 @@
 ---
-- ansible.builtin.include_role:
-    name: andrewrothstein.unarchivedeps
-- ansible.builtin.include_role:
+- name: Installing andrewrothstein.temurin
+  ansible.builtin.include_role:
     name: andrewrothstein.temurin
   vars:
-    openjdk_app: jre
+    temurin_app: jre
 - name: Check for flink installation...
   become: true
   ansible.builtin.stat:
     path: '{{ flink_install_dir }}'
   changed_when: false
   register: flink_binary
-- when: not flink_binary.stat.exists
+- name: Downloading and installing flink
+  when: not flink_binary.stat.exists
   block:
     - name: Downloading {{ flink_url }} to {{ flink_tmp_archive }}
       become: true
@@ -19,9 +19,12 @@
       ansible.builtin.get_url:
         url: '{{ flink_url }}'
         dest: '{{ flink_tmp_archive }}'
-        mode: 0644
+        mode: '644'
         checksum: '{{ flink_checksum }}'
         timeout: '{{ flink_download_timeout_seconds }}'
+    - name: Installing andrewrothstein.unarchivedeps
+      ansible.builtin.include_role:
+        name: andrewrothstein.unarchivedeps
     - name: Unarchive flink...
       become: true
       become_user: root
