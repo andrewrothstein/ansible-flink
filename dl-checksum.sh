@@ -19,5 +19,4 @@ dl_ver() {
     dl $ver $scala_ver
 }
 
-scala_ver=2.12
-dl_ver ${1:-1.19.0} $scala_ver
+dl_ver ${1:-1.19.1} 2.12
