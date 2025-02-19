@@ -1,5 +1,5 @@
 ---
-flink_ver: 1.20.0
+flink_ver: 1.20.1
 flink_scala_ver: '2.12'
 flink_mirror: http://www.apache.org/dist/flink
 flink_download_timeout_seconds: 600
@@ -36,3 +36,6 @@ flink_checksums:
   '1.20.0':
     # https://www.apache.org/dist/flink//flink-1.20.0/flink-1.20.0-bin-scala_2.12.tgz.sha512
     '2.12': sha512:2af8c4d0329df8b139d8ad50ef9179bfed98907a9df7d4411b6e60ff60ca8105f81d07d8d2b7b904e214e68f10c9dfa3616274ca692a2b18de66f3541597a71d
+  '1.20.1':
+    # https://www.apache.org/dist/flink//flink-1.20.1/flink-1.20.1-bin-scala_2.12.tgz.sha512
+    '2.12': sha512:c50105a095839c663074d6a242e72d0e27886f584e0d568a89e3cf84b87da2b5cf188e230f65890a4622192ddad49b347d57ea5fe1c3510d27484b64a4b4c415
